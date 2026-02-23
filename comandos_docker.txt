@@ -1,0 +1,8 @@
+# Para iniciar o container do pgAdmin4, use o seguinte comando:
+docker run --name pgadmin4 -p 15432:80 -e PGADMIN_DEFAULT_EMAIL=admin@admin.com -e PGADMIN_DEFAULT_PASSWORD=admin --network library-network dpage/pgadmin4
+
+# Para iniciar o container do PostgreSQL, use o seguinte comando:
+docker run --name librarydb -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=library --network library-network postgres:17.8
+
+# Para criar uma rede Docker para conectar os containers do pgAdmin4 e PostgreSQL, use o seguinte comando:
+docker network create library-network
