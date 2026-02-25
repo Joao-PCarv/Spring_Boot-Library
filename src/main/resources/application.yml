@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: libraryapi
+
+ # Datasource configuration for PostgreSQL
+  datasource:
+    url: jdbc:postgresql://localhost:5432/library
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
