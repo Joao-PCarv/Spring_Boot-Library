@@ -10,3 +10,21 @@ spring:
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
+
+  # JPA and Hibernate configuration
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update # Possible values: none, validate, update, create, create-drop
+    # none: No action will be performed on the database schema.
+
+    # validate: Hibernate will validate the database schema against the entity mappings. If there are discrepancies, an exception will be thrown.
+
+    # update: Hibernate will automatically update the database schema to match the entity mappings.
+
+    # This is useful during development but should be used with caution in production.
+
+    # create: Hibernate will create the database schema based on the entity mappings.
+    # This will drop and recreate the schema each time the application starts, which is not recommended for production.
+
+    # create-drop: Similar to create, but the schema will be dropped when the application shuts down.

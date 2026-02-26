@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -30,6 +31,7 @@ public class Autor {
     @Column(name = "nacionalidade", length = 50, nullable = false)
     private String nacionalidade;
 
-
+    @OneToMany(mappedBy = "autor") // Especifica o relacionamento um-para-muitos entre Autor e Livro, onde "autor" é o nome do atributo na classe Livro que referencia o Autor
+    private List<Livro> livros;
 
 }
