@@ -1,10 +1,13 @@
 package github.jpc.libraryapi.repository;
 
 import github.jpc.libraryapi.model.Autor;
+import github.jpc.libraryapi.model.GeneroLivro;
+import github.jpc.libraryapi.model.Livro;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -13,6 +16,9 @@ public class AutorRepositoryTest {
 
     @Autowired
     AutorRepository repository;
+
+    @Autowired
+    LivroRepository livroRepository;
 
     @Test
     public void salvarTest() {
@@ -68,6 +74,38 @@ public class AutorRepositoryTest {
         var id = UUID.fromString("c073f250-228b-4d2c-a73a-f21091924bf0");
         var maria = repository.findById(id).get();
         repository.delete(maria);
+    }
+
+    @Test
+    void salvarAutorComLivrosTest() {
+        Autor autor = new Autor();
+        autor.setNome("Antonio");
+        autor.setNacionalidade("PT");
+        autor.setDataNascimanto(LocalDate.of(1970, 9, 24));
+
+        Livro livro = new Livro();
+        livro.setIsbn("978-85-508-0439-8212");
+        livro.setPreco(BigDecimal.valueOf(203));
+        livro.setGenero(GeneroLivro.FANTASIA);
+        livro.setTitulo("Fantasia");
+        livro.setDataPublicacao(LocalDate.of(2020, 10, 10));
+        livro.setAutor(autor);
+
+        Livro livro2 = new Livro();
+        livro2.setIsbn("9788212");
+        livro2.setPreco(BigDecimal.valueOf(20));
+        livro2.setGenero(GeneroLivro.CIENCIA);
+        livro2.setTitulo("Ciencia");
+        livro2.setDataPublicacao(LocalDate.of(2000, 10, 10));
+        livro2.setAutor(autor);
+
+        autor.setLivros(new ArrayList<>());
+        autor.getLivros().add(livro);
+        autor.getLivros().add(livro2);
+
+
+        repository.save(autor);
+//        livroRepository.saveAll(autor.getLivros());
     }
 
 }
