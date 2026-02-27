@@ -33,8 +33,7 @@ public class Autor {
     @Column(name = "nacionalidade", length = 50, nullable = false)
     private String nacionalidade;
 
-//    @OneToMany(mappedBy = "autor") // Especifica o relacionamento um-para-muitos entre Autor e Livro, onde "autor" é o nome do atributo na classe Livro que referencia o Autor
-    @Transient
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL) // Especifica o relacionamento um-para-muitos entre Autor e Livro, onde "autor" é o nome do atributo na classe Livro que referencia o Autor
     private List<Livro> livros;
 
 }
