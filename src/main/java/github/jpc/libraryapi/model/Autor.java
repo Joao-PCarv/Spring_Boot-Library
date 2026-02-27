@@ -3,6 +3,7 @@ package github.jpc.libraryapi.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Table(name="autor", schema = "public") // Especifica o nome da tabela no banco de dados
 @Getter // Gera os métodos getters para os atributos da classe
 @Setter
+@ToString
 public class Autor {
 
     //Mapeamento dos atributos da classe para as colunas da tabela no banco de dados do autor
@@ -31,7 +33,8 @@ public class Autor {
     @Column(name = "nacionalidade", length = 50, nullable = false)
     private String nacionalidade;
 
-    @OneToMany(mappedBy = "autor") // Especifica o relacionamento um-para-muitos entre Autor e Livro, onde "autor" é o nome do atributo na classe Livro que referencia o Autor
+//    @OneToMany(mappedBy = "autor") // Especifica o relacionamento um-para-muitos entre Autor e Livro, onde "autor" é o nome do atributo na classe Livro que referencia o Autor
+    @Transient
     private List<Livro> livros;
 
 }
