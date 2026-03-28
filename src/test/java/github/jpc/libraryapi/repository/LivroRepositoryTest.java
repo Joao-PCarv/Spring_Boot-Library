@@ -54,7 +54,7 @@ class LivroRepositoryTest {
         Autor autor = new Autor();
         autor.setNome("Joao");
         autor.setNacionalidade("Brasileira");
-        autor.setDataNascimanto(LocalDate.of(1951, 1, 31));
+        autor.setDataNascimento(LocalDate.of(1951, 1, 31));
 
         // Associa o autor ao livro e salva o livro, o que também salvará o autor devido à configuração de cascade.all na entidade Livro
 
