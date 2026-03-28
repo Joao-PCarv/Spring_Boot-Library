@@ -28,3 +28,13 @@ spring:
     # This will drop and recreate the schema each time the application starts, which is not recommended for production.
 
     # create-drop: Similar to create, but the schema will be dropped when the application shuts down.
+
+  security:
+    oauth2:
+      client:
+        registration:
+            google:
+
+                # Devemos declarar variaveis de ambiente para o client-id e client-secret, para não expor essas informações sensíveis no código-fonte.
+                client-id: ${GOOGLE_CLIENT_ID}
+                client-secret: ${GOOGLE_CLIENT_SECRET}
